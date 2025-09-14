@@ -10,13 +10,14 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class AppiumConfig {
-    /*{
-"platformName": "Android",
-"deviceName": " my",
-"platformVersion": "8.0",
-"appPackage": "com.sheygam.contactapp",
-"appActivity": ".SplashActivity"
-}*/
+
+//    {
+//        "platformName": "Android",
+//            "deviceName": " my",
+//            "platformVersion": "8.0",
+//            "appPackage": "com.sheygam.contactapp",
+//            "appActivity": ".SplashActivity"
+//    }
 
     public static AppiumDriver<AndroidElement> driver;
 
@@ -38,7 +39,4 @@ public class AppiumConfig {
     public void tearDown(){
         driver.quit();
     }
-
-
-
 }
