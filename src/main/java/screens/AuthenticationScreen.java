@@ -3,7 +3,11 @@ package screens;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidElement;
 import models.Auth;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 public class AuthenticationScreen extends BaseScreen {
 
@@ -43,5 +47,20 @@ public class AuthenticationScreen extends BaseScreen {
         type(emailEditText, auth.getEmail());
         type(passwordEditText, auth.getPassword());
         return this;
+    }
+
+    public AuthenticationScreen submitLoginNegative() {
+        loginBtn.click();
+        return this;
+    }
+
+    public AuthenticationScreen isErrorMessageHasText(String text) {
+        //Created checking to text and click
+        Alert alert = new WebDriverWait(driver,10)
+                .until(ExpectedConditions.alertIsPresent()); //Checking text and stop to time waiting
+        driver.switchTo().alert();  //driver .switchTo() .alert();
+        Assert.assertTrue(alert.getText().contains(text)); //Checking to alert content text im waiting?
+        alert.accept();
+    return this;
     }
 }
